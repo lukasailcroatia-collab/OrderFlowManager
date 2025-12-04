@@ -1,0 +1,205 @@
+Build a clean, minimal internal business app for a vending machine inventory system.
+The main feature should be a Purchase Order module with an easy, modern UI and inline line-item editing.
+
+Please generate the full UI layout, page structure, and core CRUD actions, but avoid mixing all features on one page. Use a clean navigation layout.
+
+App Structure
+
+Create the following pages:
+
+Dashboard
+
+Products
+
+Suppliers
+
+Purchase Orders
+
+PO List
+
+New Purchase Order (separate page)
+
+Receive Purchase Order
+
+Inventory
+
+Refill Jobs (empty placeholder page for now)
+
+Use a minimal, modern design with spacing, clean typography, and logical grouping of components.
+
+Page: Purchase Orders → New Purchase Order
+
+This is the MOST important page.
+Make it extremely clean and easy to use.
+
+Layout:
+
+At the top: a container with
+
+Supplier dropdown (required)
+
+Expected delivery date
+
+PO status = default “draft”
+
+Inline Line Items Section:
+
+Below the PO header, create a Table or List / Repeat block that supports inline editing for line items.
+
+Each line item row should have:
+
+Product dropdown (filtered by selected supplier)
+
+Quantity (editable number input)
+
+Unit price (editable)
+
+Total = quantity × unit price (calculated field, read-only)
+
+Include:
+
+Button “Add Line Item” → appends a new blank row to the line-items array
+
+Button in each row to delete that row
+
+Display a running subtotal and total at the bottom.
+
+Use UI Bakery state to store the draft line items array.
+Use a transformer/action to compute totals.
+
+Buttons:
+
+Save Draft Purchase Order
+
+Submit Purchase Order (Awaiting Delivery)
+
+On submit:
+
+Create PO record
+
+Bulk create PO line items
+
+Navigate back to Purchase Orders list page
+
+Page: Purchase Orders → List
+
+Show a table of all POs with:
+
+PO ID
+
+Supplier
+
+Status
+
+Ordered date
+
+Expected date
+
+Add:
+
+Filter by supplier
+
+Filter by status
+
+Button “New Purchase Order” → navigate to New PO page
+
+Row click → open PO details page
+
+Page: Receive Purchase Order
+
+When a PO is selected:
+
+Show PO header in a top container
+
+Show line items table with:
+
+Product
+
+Quantity ordered
+
+Quantity received (editable input)
+
+Remaining quantity
+
+Add a button: “Receive Items”
+Action workflow:
+
+Update each line item with received quantity
+
+Insert stock movements into the Inventory table
+
+Update PO status automatically:
+
+If all received → “complete”
+
+If some missing → “partially_received”
+
+If none → keep as “awaiting_delivery”
+
+Navigate back to PO list after success.
+
+Page: Products
+
+Table of products
+
+Right-side form to add/edit products
+
+Supplier filter
+
+CRUD actions
+
+Page: Suppliers
+
+Table
+
+Side form
+
+Basic CRUD
+
+Page: Inventory
+
+Table
+
+Filter by product or location
+
+Button: “Adjust Stock” to modify quantity
+
+Store adjustments in a stock movements/ledger table
+
+Design Requirements
+
+Clean, minimal layout
+
+Good whitespace
+
+Use containers and sections
+
+Use sticky headers where useful
+
+Use responsive layout
+
+Use modern form fields and dropdowns
+
+Do NOT overload a single page
+
+Database Schema
+
+Please generate (or map to existing) tables for:
+
+products
+
+suppliers
+
+purchase_orders
+
+purchase_order_line_items
+
+inventory
+
+stock_movements
+
+refill_jobs
+
+refill_job_line_items
+
+Include CRUD actions for each.
